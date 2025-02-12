@@ -3,6 +3,12 @@
   "version": "1.0.7",
   "description": "org.jasypt.util.text.BasicTextEncryptor for Node.js",
   "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./jasypt.esm.js",
+      "require": "./jasypt.cjs.js"
+    }
+  },
   "bin": {
     "jasypt": "./bin/jasypt.js"
   },
@@ -11,6 +17,8 @@
     "encryptor.js",
     "index.js",
     "jasypt.js",
+    "jasypt.cjs.js",
+    "jasypt.esm.js",
     "util.js",
     "cache.js"
   ],
@@ -18,7 +26,12 @@
     "test": "tap -j4 test/*",
     "ci": "tap -j4 test/* --cov",
     "cov": "tap -j4 test/* --cov --coverage-report=html",
-    "benchmark": "node ./benchmark/jasypt.js"
+    "benchmark": "node ./benchmark/jasypt.js",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "rollup -c rollup.config.cjs.js",
+    "build:esm": "rollup -c rollup.config.esm.js",
+    "postinstall": "patch-package",
+    "demo:cjs": "set NODE_OPTIONS=--openssl-legacy-provider && node demo/demo-cjs.js"
   },
   "repository": {
     "type": "git",
@@ -39,10 +52,19 @@
   "homepage": "https://github.com/rickyes/jasypt#readme",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.26.8",
+    "@babel/preset-env": "^7.26.8",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.4",
     "codecov": "^3.6.5",
     "nyc": "^14.1.1",
+    "patch-package": "^8.0.0",
+    "rollup": "^4.34.6",
+    "rollup-plugin-polyfill-node": "^0.13.0",
     "tap": "^14.10.5"
   },
   "dependencies": {

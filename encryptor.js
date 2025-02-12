@@ -1,5 +1,6 @@
 'use strict';
 
+const { Buffer } = require('node:buffer');
 const assert = require('assert');
 const crypto = require('crypto');
 const util = require('./util');
