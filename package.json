@@ -1,7 +1,7 @@
 {
-  "name": "jasypt",
+  "name": "jasypt-js",
   "version": "1.0.7",
-  "description": "org.jasypt.util.text.BasicTextEncryptor for Node.js",
+  "description": "org.jasypt.util.text.BasicTextEncryptor for Node.js and Browser",
   "main": "index.js",
   "exports": {
     ".": {
@@ -10,7 +10,7 @@
     }
   },
   "bin": {
-    "jasypt": "./bin/jasypt.js"
+    "jasypt": "bin/jasypt.js"
   },
   "files": [
     "bin/",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rickyes/jasypt.git"
+    "url": "git+https://github.com/Robin-zero/jasypt.git"
   },
   "keywords": [
     "jasypt",
@@ -45,11 +45,11 @@
     "decrypt",
     "BasicTextEncryptor"
   ],
-  "author": "Ricky泽阳 <mail@zhoumq.cn>",
+  "author": "Robin <robin_zero@126.com>",
   "bugs": {
-    "url": "https://github.com/rickyes/jasypt/issues"
+    "url": "https://github.com/Robin-zero/jasypt/issues"
   },
-  "homepage": "https://github.com/rickyes/jasypt#readme",
+  "homepage": "https://github.com/Robin-zero/jasypt#readme",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.26.8",

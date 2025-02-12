@@ -1,36 +1,26 @@
-## Jasypt
+## jasypt-js
 
 [![NPM version][npm-image]][npm-url]
-[![Codacy][codacy-image]][codacy-url]
-[![build status][build-image]][build-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![npm downloads/month][downloads-month-image]][download-url]
-[![npm downloads][downloads-image]][download-url]
 
+[npm-image]: https://img.shields.io/npm/v/jasypt-js.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/jasypt-js
 
-[npm-image]: https://img.shields.io/npm/v/jasypt.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/jasypt
-[build-image]: https://github.com/rickyes/jasypt/actions/workflows/node.js.yml/badge.svg?branch=master
-[build-url]: https://github.com/rickyes/jasypt
-[codecov-image]: https://codecov.io/gh/rickyes/jasypt/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/github/rickyes/jasypt?branch=master
-[downloads-month-image]: https://img.shields.io/npm/dm/jasypt.svg?style=flat-square
-[download-url]: https://npmjs.org/package/jasypt
-[downloads-image]: https://img.shields.io/npm/dt/jasypt.svg
-[codacy-image]: https://app.codacy.com/project/badge/Grade/7a96dea4ed924752b2f131c0ab5ec812
-[codacy-url]: https://app.codacy.com/manual/rickyes/jasypt
+org.jasypt.util.text.BasicTextEncryptor for Node.js and Browser
 
-org.jasypt.util.text.BasicTextEncryptor for Node.js
+### 背景
 
-#### 背景
-`Spring Boot` 集成 `jasypt` 对配置项进行加密，为了与 `Java` 体系保持一致，于是有了 `Jasypt.js`
+`Spring Boot` 集成 `jasypt` 对配置项进行加密，为了与 `Java` 体系保持一致，于是有了 `jasypt-js`
 
-#### 使用
-**`SDK`**
+### 使用
+
+#### SDK 使用
+
+##### For NodeJS
+
 ``` js
 'use strict';
 
-const Jasypt = require('jasypt');
+const Jasypt = require('jasypt-js');
 const jasypt = new Jasypt();
 // 设置秘钥
 jasypt.setPassword('G0CvDz7oJn60');
@@ -40,7 +30,23 @@ const encryptMsg = jasypt.encrypt('admin');
 const decryptMsg = jasypt.decrypt(encryptMsg);
 ```
 
-**`命令行`**
+##### For Browser
+
+``` js
+'use strict';
+
+import Jasypt from 'jasypt-js';
+const jasypt = new Jasypt();
+// 设置秘钥
+jasypt.setPassword('G0CvDz7oJn60');
+// 加密
+const encryptMsg = jasypt.encrypt('admin');
+// 解密
+const decryptMsg = jasypt.decrypt(encryptMsg);
+```
+
+#### 命令行
+
 ``` sh
 $ jasypt -h
 
@@ -60,6 +66,7 @@ Examples:
 ```
 
 #### 解密加密项 for Spring Boot
+
 ``` js
 // 对配置项的ENC(xxx)进行解密
 const data = {
@@ -93,6 +100,7 @@ const jasypt = new Jasypt();
 jasypt.setPassword('P8dEw34TgvbY');
 jasypt.decryptConfig(data);
 ```
+
 ``` js
 // 解密出来的内容
 const data = {
